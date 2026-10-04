@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/backend/">
+    <Project Path="src/backend/ShoppingCart.Api/ShoppingCart.Api.csproj" />
+  </Folder>
+</Solution>
