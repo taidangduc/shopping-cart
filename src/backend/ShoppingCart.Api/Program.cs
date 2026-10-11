@@ -78,6 +78,16 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigins", x =>
+    {
+        x.WithOrigins(builder.Configuration.GetSection("CORS:AllowedOrigins").Get<string[]>())
+         .AllowAnyHeader()
+         .AllowAnyMethod();
+    });
+}); 
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
@@ -98,6 +108,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseCors("AllowOrigins");
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
