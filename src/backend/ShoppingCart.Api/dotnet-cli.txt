@@ -1,0 +1,4 @@
+Run these commands from the ShoppingCart.Api project directory:
+
+dotnet ef migrations add Init_Database --project . --startup-project . --context AppDbContext --output-dir Data/Migrations
+dotnet ef database update --project . --startup-project . --context AppDbContext

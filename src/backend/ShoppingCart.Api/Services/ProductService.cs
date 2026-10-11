@@ -13,7 +13,9 @@ public class ProductService(IProductRepository repository) : IProductService
         {
             Id = product.Id,
             Name = product.Name,
-            Price = product.Price
+            Price = product.Price,
+            ImageUrl = product.ImageUrl,
+            Stock = product.Stock
         };
     }
 

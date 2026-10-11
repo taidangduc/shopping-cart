@@ -9,11 +9,11 @@ public sealed class AppDbContextSeed
     private readonly AppDbContext _dbContext;
     private readonly IEnumerable<Product> _mockProducts =
     [
-        new Product { Id = "product-001", Name = "Wireless Headphones", Price = 79.99m, Stock = 25 },
-        new Product { Id = "product-002", Name = "Mechanical Keyboard", Price = 109.50m, Stock = 18 },
-        new Product { Id = "product-003", Name = "USB-C Hub", Price = 34.99m, Stock = 40 },
-        new Product { Id = "product-004", Name = "Laptop Stand", Price = 45.00m, Stock = 30 },
-        new Product { Id = "product-005", Name = "Wireless Mouse", Price = 29.99m, Stock = 50 }
+        new Product { Id = "201", Name = "Wireless Headphones", Price = 79.99m, Stock = 25 },
+        new Product { Id = "202", Name = "Mechanical Keyboard", Price = 109.50m, Stock = 18 },
+        new Product { Id = "203", Name = "USB-C Hub", Price = 34.99m, Stock = 40 },
+        new Product { Id = "204", Name = "Laptop Stand", Price = 45.00m, Stock = 30 },
+        new Product { Id = "205", Name = "Wireless Mouse", Price = 29.99m, Stock = 50 }
     ];
     private readonly IEnumerable<User> _mockUsers;
 
@@ -25,9 +25,9 @@ public sealed class AppDbContextSeed
 
         var demoUser = new User
         {
-            Id = "user-demo",
+            Id = "100",
             Username = "demo",
-            Email = "demo@shoppingcart.local",
+            Email = "user@example.com",
             PasswordHash = string.Empty
         };
         demoUser.PasswordHash = passwordHasher.HashPassword(demoUser, "Password123!");
