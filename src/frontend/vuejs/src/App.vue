@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, watch } from 'vue';
 import { RouterView } from 'vue-router';
-import AppHeader from '@/components/appheader.vue';
+import Header from '@/components/header.vue';
 import { useCartStore } from '@/store/cart';
 import { useAuthStore } from './store/auth';
 import Drawer from '@/components/drawer.vue';
@@ -32,7 +32,7 @@ watch(isAuthenticated, async (loggedIn) => {
 </script>
 
 <template>
-  <AppHeader @openCart="drawer = true" />
+  <Header @openCart="drawer = true" />
   <Drawer :open="drawer" title="Your cart" @close="drawer = false">
     <MiniCart @navigate="drawer = false" />
   </Drawer>
