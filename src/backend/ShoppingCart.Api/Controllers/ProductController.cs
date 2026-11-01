@@ -12,7 +12,7 @@ public class ProductController(IProductService service) : ControllerBase
     [HttpGet]
     [ProducesResponseType(typeof(PaginatedResponse<ProductResponse>), StatusCodes.Status200OK)]
     [AllowAnonymous]
-    public async Task<ActionResult<PaginatedResponse<ProductResponse>>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 10, CancellationToken ct = default)
+    public async Task<ActionResult<PaginatedResponse<ProductResponse>>> GetAll([FromQuery] int page = 1, [FromQuery] int pageSize = 6, CancellationToken ct = default)
     {
         return Ok(await service.GetAllAsync(page, pageSize, ct));
     }
