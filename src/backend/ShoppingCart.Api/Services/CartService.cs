@@ -26,7 +26,7 @@ public class CartService(ICartRepository cartRepository, IProductRepository prod
 
     public async Task<CartResponse?> GetByIdAsync(string id, CancellationToken ct = default)
     {
-        var cart = await cartRepository.GetByIdAsync(id, ct) ?? throw new InvalidOperationException($"Cart with ID '{id}' not found.");
+        var cart = await cartRepository.GetByIdAsync(id, ct);
         return await ToPostProcessAsync(cart, ct);
     }
 
@@ -41,9 +41,9 @@ public class CartService(ICartRepository cartRepository, IProductRepository prod
         return cartRepository.DeleteAsync(id, ct);
     }
 
-    public async Task<CartResponse?> ToPostProcessAsync(Cart cart, CancellationToken ct = default)
+    public async Task<CartResponse?> ToPostProcessAsync(Cart? cart, CancellationToken ct = default)
     {
-        if (cart.Items.Count == 0)
+        if (cart is null || cart.Items.Count == 0)
         {
             return null;
         }
@@ -73,7 +73,8 @@ public class CartService(ICartRepository cartRepository, IProductRepository prod
                 Id = product.Id,
                 Name = product.Name,
                 Price = product.Price,
-                ImageUrl = product.ImageUrl
+                ImageUrl = product.ImageUrl,
+                Quantity = item.Quantity
             });
         }
         return ToResponse(cart.Id, cartProduct);
